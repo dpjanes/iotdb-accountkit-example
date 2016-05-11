@@ -14,6 +14,15 @@ https://github.com/auth0-blog/blog-passwordless-authentication
 though it has been substantially rewritten to use unirest
 and promises.
 
+Promises make the code a lot longer, but hopefully every individual
+step makes sense and is "correct".
+
+## Help Needed
+
+Right now the `appsecret_proof` is not working, so you'll have to
+turn this off on the Facebook App Page. If you have some
+insight into why this may be, let me know.
+
 ## Running
 
 * set up a Facebook Web App
