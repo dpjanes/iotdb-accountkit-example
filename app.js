@@ -194,5 +194,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.get('/', page_login);
 app.post('/sendcode', page_login_verify);
+app.get('/sendcode', (request, response) => {
+    return response.redirect("/");
+});
 
 app.listen(accountd.port || 3000);
