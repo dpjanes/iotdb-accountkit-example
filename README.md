@@ -30,3 +30,8 @@ insight into why this may be, let me know.
 * copy account.json.template account.json
 * fill in the details
 * `node app.js`
+
+## Notes
+
+* you'll have to properly sessionize the CSRF, you just can't reuse
+  the same value over and over again like here!

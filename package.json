@@ -6,7 +6,6 @@
     "dependencies": {
         "body-parser": "~1.15.1", 
         "express": "~4.13.4", 
-        "guid": "~0.0.12", 
         "iotdb": ">=0.14.0", 
         "iotdb-transport": "~0.0.33", 
         "mustache": "~2.2.1", 

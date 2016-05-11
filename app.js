@@ -15,7 +15,7 @@ const _ = iotdb._;
 
 const Q = require('q');
 const fs = require('fs');
-const guid = require('guid');
+const path = require('path');
 const express = require('express');
 const bodyParser = require("body-parser");
 const mustache = require('mustache');
@@ -30,11 +30,11 @@ const accountd = require('./account.json');
 const URL_ME = "https://graph.accountkit.com/" + accountd.api_version + "/me";
 const URL_TOKEN_EXCHANGE = "https://graph.accountkit.com/" + accountd.api_version + "/access_token";
 
-var csrf_guid = guid.raw();
+var csrf_guid = _.random.id(64);
 
 // --- webpages --- 
 const page_login = function (request, response) {
-    const template = fs.readFileSync('login.html').toString();
+    const template = fs.readFileSync(path.join(__dirname, 'login.html')).toString();
     const templated = {
         csrf: csrf_guid,
         app_id: accountd.facebook_app_id,
@@ -131,7 +131,7 @@ const page_login_verify = function (request, response) {
 
     // make the templates used for the OK response
     const _response_ok_templates = (self, done) => {
-        self.template = fs.readFileSync('login_success.html').toString();
+        self.template = fs.readFileSync(path.join(__dirname, 'login_success.html')).toString();
         self.templated = {
             user_access_token: self.token.access_token,
             expires_at: self.token.expires_at,
@@ -195,4 +195,4 @@ app.use(bodyParser.json());
 app.get('/', page_login);
 app.post('/sendcode', page_login_verify);
 
-app.listen(3000);
+app.listen(accountd.port || 3000);
