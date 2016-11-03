@@ -119,7 +119,6 @@ const page_login_verify = function (request, response) {
             .get(self.url_me)
             .json()
             .end((me_response) => {
-                console.log(me_response);
                 if (me_response.error) {
                     return done(me_response.error);
                 }
